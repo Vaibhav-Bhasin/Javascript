@@ -1,0 +1,105 @@
+<HTML>
+    <head>
+        <title>
+            Javascirpt
+        </title>
+    </head>
+    <body>
+    <div>
+        <h1 id="heading">Welcome</h1>
+        <p>Enter your name to start</p>
+        <input id="user" value="your name here" type="text"></input>
+    </div>
+    <br>
+    <div>    
+    <canvas id="myCanvas" width="900" height="600" style="border: 2px solid #2d0057;background: #2d0057;"></canvas>
+    </div>
+    <script>
+        //alert("Hey User");
+        //confirm("Are you sure you want to quit??");
+        //prompt("Please enter your name!!!");
+       
+        document.getElementById("heading").innerHTML = "Good Morning";
+        document.getElementById("heading").style.color = "green";
+        document.getElementById("heading").style.fontFamily = "sans-serif,fantasy,monospace";
+        /*
+        console.log("Hello");
+        console.warn("Warning!!!!");
+        console.error("There is an error");
+        */
+        document.getElementById("user").value= "Vaibhav";
+    
+        const canvas = document.getElementById("myCanvas");
+        const context = canvas.getContext("2d");
+        var x1 = 100;
+        var y1 = 100;
+        let speedx1 = 3;
+        let speedy1 = 9;
+        var x2 = 800;
+        var y2 = 100;
+        let speedx2 = 4;
+        let speedy2 = 5;
+        var x3 = 500;
+        var y3 = 550;
+        let speedx3 = 8;
+        let speedy3 = 8;
+
+
+        function make_blobs(){
+            // clear the canvas
+            context.clearRect(0,0,canvas.width,canvas.height);
+
+            // first one
+            if (x1>=canvas.width || x1<=0){
+            speedx1*=-1
+            }
+            if (y1>=canvas.height || y1<=0){
+            speedy1*=-1
+            }
+            x1+=speedx1;
+            y1+=speedy1;
+            context.beginPath();
+            context.arc(x1,y1,12,0,2*Math.PI);
+            context.fillStyle = "blue";
+            context.fill();
+            context.stroke();
+            
+            // second one
+            
+            if (x2>=canvas.width || x2<=0){
+            speedx2*=-1
+            }
+            if (y2>=canvas.height || y2<=0){
+            speedy2*=-1
+            }
+            context.beginPath();
+            context.arc(x2,y2,12,0,2*Math.PI);
+            context.fillStyle = "green";
+            context.fill();
+            context.stroke();
+            x2+=speedx2;
+            y2+=speedy2;
+           
+            // third one
+           
+            if (x3>=canvas.width || x3<=0){
+            speedx3*=-1
+            }
+            if (y3>=canvas.height || y3<=0){
+            speedy3*=-1
+            }
+            context.beginPath();
+            context.arc(x3,y3,12,0,2*Math.PI);
+            context.fillStyle = "red";
+            context.fill();
+            context.stroke();
+            x3+=speedx3;
+            y3+=speedy3;
+        }
+
+        
+        setInterval(make_blobs,10);
+
+    </script>   
+    </body>
+</HTML>
